@@ -1,0 +1,11 @@
+/* CSS declarations go here */
+
+.test {
+  background-color: black
+}
+
+.test2 {
+  composes: test;
+  color: white;
+  text-transform: capitalize;
+}

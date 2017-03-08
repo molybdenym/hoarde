@@ -1,0 +1,23 @@
+[ignore]
+.*/node_modules/.*/\(lib\|test\).*\.json$
+
+[include]
+
+[libs]
+
+[options]
+# Meteor
+module.name_mapper='^\/\(.*\)$' -> '<PROJECT_ROOT>/\1'
+module.name_mapper='^meteor\/\(.*\):\(.*\)$' -> '<PROJECT_ROOT>/.meteor/local/build/programs/server/packages/\1_\2'
+module.name_mapper='^meteor\/\(.*\)$' -> '<PROJECT_ROOT>/.meteor/local/build/programs/server/packages/\1'
+module.name_mapper='^meteor\/\(.*\)$' -> '<PROJECT_ROOT>/.meteor/local/build/programs/web.browser/packages/\1'
+
+# CSS Modules
+module.name_mapper.extension='mss' -> '<PROJECT_ROOT>/types/stubs/CSSModules.js'
+
+# Error Supression by Line
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+suppress_comment=\\(.\\|\n\\)*\\$FlowIssue
+
+[version]
+0.36.0
