@@ -17,8 +17,8 @@ Template.hello.helpers({
 });
 
 Template.hello.events({
-  'click button'(event, instance) {
+  'click button': (event: any, template: any) => {
     // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() * 2);
+    template.counter.set(template.counter.get() * 2);
   },
 });

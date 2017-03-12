@@ -15,12 +15,16 @@ type Props = { data: { loading: boolean, say: string, error: boolean } };
 class HelloWorld extends React.Component {
   props: Props;
 
+  handleClick = () => {
+    console.log('whatever');
+  }
+
   render() {
     if (this.props.loading) return <div>Loading . . .</div>;
     if (this.props.error) return <h1>ERROR!</h1>;
 
     return (
-      <h2>
+      <h2 onClick={this.handleClick}>
         {<span className={styles.test2}>{this.props.data.say } (React Root)</span>}
       </h2>
     );
