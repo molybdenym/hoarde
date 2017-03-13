@@ -8,10 +8,11 @@ import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import proxyMiddleware from 'http-proxy-middleware';
 
-// import schema from '../imports/api/schema.graphql';
+// import schema from '../imports/api/index.js';
 import Mocks from '../imports/api/mocks';
 import typeDefs from '../imports/api/schema.js';
 import resolvers from '../imports/api/resolvers.js';
+
 
 const graphQLServer = express();
 const GRAPHQL_PORT = 4000;

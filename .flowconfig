@@ -1,6 +1,3 @@
-[ignore]
-.*/node_modules/.*/\(lib\|test\).*\.json$
-
 [include]
 
 [libs]
@@ -31,6 +28,8 @@ module.name_mapper='^meteor\/\(.*\)$' -> '<PROJECT_ROOT>/.meteor/local/build/pro
 .*/.meteor/local/build/programs/web.browser/app/.*
 .*/.meteor/local/build/main.js
 .*/.meteor/packages/.*
+
+.*/node_modules/.*/\(lib\|test\).*\.json$
 
 # This package can give you a lot of flow errors, better ignore it
 .*/node_modules/fbjs/.*
