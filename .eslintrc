@@ -15,13 +15,16 @@
   "plugins": [
     "react",
     "meteor",
-    "import"
+    "import",
+    "flowtype",
+    "babel"
   ],
   "extends": [
     "airbnb/base",
     "plugin:react/recommended",
     "plugin:meteor/recommended",
-    "plugin:import/errors"
+    "plugin:import/errors",
+    "plugin:flowtype/recommended"
   ],
   "rules": {
     "meteor/eventmap-params": 0,
