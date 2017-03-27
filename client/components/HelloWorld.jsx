@@ -4,7 +4,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
-import styles from '../main.css';
+import styles from '../styles/HelloWorld.css';
 
 const GET_SAY = gql`{ say }`;
 
@@ -25,13 +25,11 @@ class HelloWorld extends React.Component {
 
     return (
       <h2 onClick={this.handleClick}>
-        {<span className={styles.test2}>{this.props.data.say } (React Root)</span>}
+        <span className={styles.test2}>{this.props.data.say } (React Root)</span>
       </h2>
     );
   }
 }
 
 const HelloWorldWithData = graphql(GET_SAY)(HelloWorld);
-
-
 export default HelloWorldWithData;

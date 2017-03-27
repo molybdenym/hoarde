@@ -1,0 +1,15 @@
+.abilityScores {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 320px;
+  margin: auto;
+}
+.abilityScores > div {
+  flex: 0 0 100px;
+  text-align: center;
+  height: 100px;
+  background-color: wheat;
+  border: 1px solid slategray;
+  border-radius: 3px;
+}
