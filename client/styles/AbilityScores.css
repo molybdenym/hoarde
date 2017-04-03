@@ -1,15 +1,74 @@
-.abilityScores {
+@value primaryText, lightText, defaultBg, lightBg, defaultBg, accentBg, divider from './shared/palette.css';
+
+.section {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 320px;
+  background-color: white;
+  width: 980px;
   margin: auto;
 }
-.abilityScores > div {
-  flex: 0 0 100px;
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 0 130px;
+  overflow: hidden;
   text-align: center;
+  text-transform: uppercase;
+  height: calc(130px / 1.618);
+  color: lightText;
+  background-color: defaultBg;
+  border: 2px solid divider;
+  border-radius: 1.618px;
+  margin: 5px;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 29px;
+  padding: 0 9px 3px 9px;
+}
+
+.rolls {
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 29px;
   height: 100px;
-  background-color: wheat;
-  border: 1px solid slategray;
-  border-radius: 3px;
+  color: primaryText;
+  background-color: lightBg;
+  padding: 3px;
+  transform: translateY(93px);
+  transition: transform 400ms;
+}
+.tile:hover > .rolls {
+  transform: translateY(0);
+}
+
+.mods {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  flex: 0 0 29px;
+  color: primaryText;
+  background-color: lightBg;
+  border-top: 1px solid divider;
+  z-index: 10;
+  transform: translateY(32px);
+  transition: transform 300ms;
+  padding: 0 0 3px 0;
+}
+.tile:hover > .mods {
+  transform: translateY(0);
+}
+
+.prof {
+  border-color: accentBg;
 }

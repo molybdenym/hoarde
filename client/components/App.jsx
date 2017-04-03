@@ -16,7 +16,9 @@ class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={this.props.client || client}>
-        <AbilityScores />
+        <main className="page">
+          <AbilityScores />
+        </main>
       </ApolloProvider>
     );
   }

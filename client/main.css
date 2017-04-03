@@ -1,0 +1,79 @@
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font: 16px/1.2 'Nunito', sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+figure,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+}
+main,
+li {
+    display: block;
+}
+h1,
+h2,
+h3,
+h4 {
+    font-size: inherit;
+}
+strong {
+    font-weight: bold;
+}
+a,
+button {
+    color: inherit;
+    transition: .3s;
+}
+a {
+    text-decoration: none;
+}
+button {
+    overflow: visible;
+    border: 0;
+    font: inherit;
+    -webkit-font-smoothing: inherit;
+    letter-spacing: inherit;
+    background: none;
+    cursor: pointer;
+}
+::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+:focus {
+    outline: 0;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+/* Base Styles */
+
+h1 { font-size: 30px; }
+h2 { font-size: 24px; }
+h3 { font-size: 18px; }
+h4 { font-size: 16px; }
+h5 { font-size: 12px; }
+h6 { font-size: 10px; }
+
+p { font-size: 14px; }
+:global p.tiny { font-size: 8px; }
+
+:global main.page { width: 100%; background-color: lightgray; }

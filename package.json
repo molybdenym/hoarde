@@ -38,11 +38,10 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-standard": "^2.1.1",
-    "flow-bin": "^0.36.0"
+    "flow-bin": "^0.36.0",
+    "node-sass": "^4.5.2"
   },
   "cssModules": {
-    "ignorePaths": [
-      "node_modules"
-    ]
+    "ignorePaths": ["node_modules"]
   }
 }
