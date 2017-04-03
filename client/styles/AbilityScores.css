@@ -72,3 +72,11 @@
 .prof {
   border-color: accentBg;
 }
+
+.sav {
+  transform: translateY(0px);
+  transition: transform 300ms;
+}
+.tile:hover .sav {
+  transform: translateY(-32px);
+}

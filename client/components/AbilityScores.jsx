@@ -120,11 +120,11 @@ const AbilityTile = (props: ASTProps) => {
 
   return (
     <div className={[styles.tile, (proficiency ? styles.prof : '')].join(' ')}>
-      <p>{ability}</p>
+      <h4>{ability}</h4>
       <h1>{numWithSign(abilityMod)}</h1>
       <div className={styles.score}>
         <div><p>{totalScore}</p><p className="tiny">tot</p></div>
-        <div><p>{numWithSign(savThrow)}</p><p className="tiny">sav</p></div>
+        <div className={styles.sav}><p>{numWithSign(savThrow)}</p><p className="tiny">sav</p></div>
       </div>
 
       <div className={styles.rolls}>
