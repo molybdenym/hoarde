@@ -79,4 +79,4 @@ p { font-size: 14px; font-family: 'Nunito', sans-serif; }
 :global p.tiny { font-size: 8px; }
 
 :global main.page { width: 100%; background-color: lightgray; }
-:global main.page > .grid { height: 100vh; background-color: white; max-width: 980px; margin: auto; }
+:global main.page > .sheet { min-height: 100vh; background-color: white; max-width: 980px; margin: auto; }
