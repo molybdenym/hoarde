@@ -7,7 +7,7 @@ import { graphql } from 'react-apollo';
 import AbilityScores from './AbilityScores';
 
 
-type Props = { data: { getUser: Object, loading: boolean, error: boolean } };
+type Props = { data: { getUser: User, loading: boolean, error: boolean } };
 
 class CharSheet extends React.Component {
   props: Props;

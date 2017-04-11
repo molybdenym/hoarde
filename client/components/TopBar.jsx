@@ -7,17 +7,9 @@ import { graphql } from 'react-apollo';
 // import styles from '../styles/TopBar.css';
 
 
-type UserLogin = {
-  token: string,
-  user: {
-    id: string,
-    username: string,
-    createdAt: string
-  }
-}
 type Props = {
   data: {
-    loginUser: UserLogin,
+    loginUser: LoginUserPayload,
     loading: boolean,
     error: boolean
   },
@@ -25,11 +17,11 @@ type Props = {
 
 class Login extends React.Component {
   props: Props;
-  state = { un: '', pw: '' };
+  state: LoginUserInput = { username: '', password: '', clientMutationId: null };
 
   handleLogin = () => {
     this.props.mutate({
-      variables: { input: { username: this.state.un, password: this.state.pw } },
+      variables: { input: this.state },
     })
     .then(({ data }) => {
       console.log('got data', data);
@@ -51,10 +43,10 @@ class Login extends React.Component {
     return (
       <div>
         <label>
-          <input name='un' value={this.state.un} onChange={this.handleChange} />
+          <input name='un' value={this.state.username} onChange={this.handleChange} />
         </label>
         <label>
-          <input name='pw' value={this.state.pw} onChange={this.handleChange} />
+          <input name='pw' value={this.state.password} onChange={this.handleChange} />
         </label>
         <button onClick={this.handleLogin}>Login</button>
       </div>
