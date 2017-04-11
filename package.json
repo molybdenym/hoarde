@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "start": "meteor run"
+    "start": "npm run codegen && meteor run",
+    "codegen:scaphold": "gql-gen --url https://us-west-2.api.scaphold.io/graphql/tame-holiday --template flow --out ./types/decls/scaphold.io.js ./client/**/*.js",
+    "codegen": "npm run codegen:scaphold"
   },
   "dependencies": {
     "apollo-client": "^0.10.1",

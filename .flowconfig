@@ -1,7 +1,7 @@
 [include]
 
 [libs]
-decls/
+types/decls/
 
 [options]
 # Absolute path support:
