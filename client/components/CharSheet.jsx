@@ -16,15 +16,17 @@ class CharSheet extends React.Component {
     if (this.props.data.loading) return <div>Loading . . .</div>;
     if (this.props.data.error) return <h1>ERROR!</h1>;
 
+    const my = this.props.data.getUser;
+    const myChars = my.playerCharacters;
+
     return (
       <div className="sheet">
-        <h3>{this.props.data.getUser.username}</h3>
-        <AbilityScores data={this.props.data.getUser.playerCharacters.edges[0].node.abilities} />
+        <h3>{my.username}</h3>
+        <AbilityScores data={myChars ? myChars.edges[0].node.abilities : []} />
       </div>
     );
   }
 }
-
 
 const GET_PC = gql`
 query GetUser {
@@ -52,5 +54,4 @@ query GetUser {
   }
 }`;
 
-const CharSheetWithData = graphql(GET_PC)(CharSheet);
-export default CharSheetWithData;
+export default graphql(GET_PC)(CharSheet)

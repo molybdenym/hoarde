@@ -16,7 +16,7 @@ type Props = {
 };
 
 class Login extends React.Component {
-  props: Props;
+  props: Props & { mutate: any }; // <-- bad flow error suppression
   state: LoginUserInput = { username: '', password: '', clientMutationId: null };
 
   handleLogin = () => {
@@ -26,7 +26,8 @@ class Login extends React.Component {
     .then(({ data }) => {
       console.log('got data', data);
       localStorage.setItem('token', data.loginUser.token);
-    }).catch((error) => {
+    })
+    .catch((error) => {
       console.log('there was an error sending the query', error);
     });
   }
@@ -54,7 +55,6 @@ class Login extends React.Component {
   }
 }
 
-
 const QUERY = gql`
   mutation LoginUserQuery ($input: LoginUserInput!) {
     loginUser(input: $input) {
@@ -67,5 +67,4 @@ const QUERY = gql`
     }
   }`;
 
-const LoginWithData = graphql(QUERY)(Login);
-export default LoginWithData;
+export default graphql(QUERY)(Login);

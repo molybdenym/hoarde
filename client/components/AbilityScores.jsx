@@ -57,8 +57,6 @@ const AbilityTile = (props: { data: Ability }) => {
   );
 };
 
-
-// const AbilityScoresWithData = graphql(GET_PC)(AbilityScores);
 export default AbilityScores;
 
 
