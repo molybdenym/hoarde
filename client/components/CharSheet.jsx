@@ -21,7 +21,7 @@ class CharSheet extends React.Component {
 
     return (
       <div className="sheet">
-        <h3>{my.username}</h3>
+        {/* <h3>{my.username}</h3> */}
         <AbilityScores data={myChars ? myChars.edges[0].node.abilities : []} />
       </div>
     );
@@ -54,4 +54,4 @@ query GetUser {
   }
 }`;
 
-export default graphql(GET_PC)(CharSheet)
+export default graphql(GET_PC)(CharSheet);

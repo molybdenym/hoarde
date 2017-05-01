@@ -1,35 +1,43 @@
 /* @flow */
 
 import React from 'react';
-import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
+import { gql, graphql, withApollo } from 'react-apollo';
 
 // import styles from '../styles/TopBar.css';
 
 
 type Props = {
-  data: {
-    loginUser: LoginUserPayload,
-    loading: boolean,
-    error: boolean
-  },
+  token: string,
+  mutate: any,
+  client: any,
+  data?: { loginUser: LoginUserPayload, loading: boolean, error: boolean },
+  children?: React$Element<*>,
 };
 
 class Login extends React.Component {
-  props: Props & { mutate: any }; // <-- bad flow error suppression
+  props: Props;
   state: LoginUserInput = { username: '', password: '', clientMutationId: null };
 
   handleLogin = () => {
     this.props.mutate({
-      variables: { input: this.state },
+      variables: { data: this.state },
     })
-    .then(({ data }) => {
-      console.log('got data', data);
-      localStorage.setItem('token', data.loginUser.token);
+    .then((res) => {
+      const { token, username } = res.data.loginUser;
+      localStorage.setItem('token', token);
+      localStorage.setItem('id', JSON.stringify(username));
+      window.location.reload();
     })
-    .catch((error) => {
-      console.log('there was an error sending the query', error);
+    .catch((err) => {
+      console.log('There was a problem logging in:', err.type());
     });
+  }
+
+  handleLogout = () => {
+    this.props.client.resetStore();
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    window.location.reload();
   }
 
   handleChange = (e) => {
@@ -38,26 +46,55 @@ class Login extends React.Component {
   }
 
   render() {
-    if (this.props.loading) return <div>Logging in ...</div>;
-    if (this.props.error) return <h1>Not logged in!</h1>;
+    const { token, data } = this.props;
+
+    if (token) {
+      return (
+        <main className="page">
+          <nav>
+            <div>{data ? data.loginUser.user.username : 'Me'}</div>
+            <button
+              onClick={this.handleLogout}
+            >
+              Logout
+            </button>
+          </nav>
+          {this.props.children}
+        </main>
+      );
+    }
 
     return (
-      <div>
+      <main>
+        <nav>
         <label>
-          <input name='un' value={this.state.username} onChange={this.handleChange} />
+          <input
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChange} />
         </label>
         <label>
-          <input name='pw' value={this.state.password} onChange={this.handleChange} />
+          <input
+            type="password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange} />
         </label>
-        <button onClick={this.handleLogin}>Login</button>
-      </div>
+
+        <button
+          onClick={this.handleLogin}
+        >
+          Login
+        </button>
+        </nav>
+      </main>
     );
   }
 }
 
-const QUERY = gql`
-  mutation LoginUserQuery ($input: LoginUserInput!) {
-    loginUser(input: $input) {
+const MUTATION = gql`
+  mutation LoginUserQuery ($data: LoginUserInput!) {
+    loginUser(input: $data) {
       token
       user {
         id
@@ -67,4 +104,4 @@ const QUERY = gql`
     }
   }`;
 
-export default graphql(QUERY)(Login);
+export default withApollo(graphql(MUTATION)(Login));
