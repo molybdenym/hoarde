@@ -22,7 +22,7 @@ class CharSheet extends React.Component {
     return (
       <div className="sheet">
         {/* <h3>{my.username}</h3> */}
-        <AbilityScores data={myChars ? myChars.edges[0].node.abilities : []} />
+        <AbilityScores data={(myChars && myChars.edges) ? myChars.edges[0].node.abilities : []} />
       </div>
     );
   }

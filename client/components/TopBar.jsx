@@ -29,7 +29,7 @@ class Login extends React.Component {
       window.location.reload();
     })
     .catch((err) => {
-      console.log('There was a problem logging in:', err.type());
+      console.log('There was a problem logging in:', err.graphQLErrors);
     });
   }
 
@@ -46,13 +46,13 @@ class Login extends React.Component {
   }
 
   render() {
-    const { token, data } = this.props;
+    const { token } = this.props;
 
     if (token) {
       return (
         <main className="page">
           <nav>
-            <div>{data ? data.loginUser.user.username : 'Me'}</div>
+            <div>{}</div>
             <button
               onClick={this.handleLogout}
             >

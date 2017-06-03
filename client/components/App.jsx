@@ -7,7 +7,7 @@ import { ApolloProvider } from 'react-apollo';
 import CharSheet from './CharSheet';
 import TopBar from './TopBar';
 
-const token = localStorage.getItem('token');
+const token = window.localStorage.getItem('token');
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
     uri: 'https://us-west-2.api.scaphold.io/graphql/tame-holiday',

@@ -1332,7 +1332,7 @@ declare type DeleteRolePayload =  {
 
 declare type CreateFileInput =  {
       name: ?string;
-      blobFieldName: string;
+      blobFieldName: ?string;
       clientMutationId: ?string;
 }
 
@@ -1370,8 +1370,8 @@ declare type DeleteFilePayload =  {
 }
 
 declare type CreatePcInput =  {
-      playerId: ?string;
       player: ?CreateUserInput;
+      playerId: ?string;
       abilities: ?Array<AbilityInput>;
       clientMutationId: ?string;
 }
