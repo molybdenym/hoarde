@@ -1,6 +1,23 @@
 # Hoarde
 
-Base framework for building a quick app
+An Online 5E character sheet app. 
+
+Install Meteor:
+```
+curl https://install.meteor.com/ | sh
+```
+
+Clone this codebase:
+```
+git clone https://github.com/molybdenym/hoarde.git
+cd hoarde
+```
+
+Install dependencies and run:
+```
+meteor npm install
+meteor run
+```
 
 
 #### dev stack
