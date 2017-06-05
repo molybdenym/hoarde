@@ -1,0 +1,28 @@
+@value primaryText, lightText, lightBg, defaultBg, accentBg, divider from './shared/palette.css';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 350px;
+  height: calc(350px / 1.618);
+  color: primaryText;
+  background-color: lightBg;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.button {
+  color: lightText;
+  background-color: defaultBg;
+  margin-top: 10px;
+}
+.button:active {
+  background-color: chocolate;
+}

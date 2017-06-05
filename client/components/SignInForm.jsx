@@ -1,20 +1,17 @@
 /* @flow */
 
 import React from 'react';
-import { gql, graphql, withApollo } from 'react-apollo';
+import { gql, graphql } from 'react-apollo';
 
-// import styles from '../styles/TopBar.css';
+import styles from '../styles/SignInForm.css';
 
 
 type Props = {
-  token: string,
-  mutate: any,
-  client: any,
-  data?: { loginUser: LoginUserPayload, loading: boolean, error: boolean },
-  children?: React$Element<*>,
+  mutate: any;
+  data?: { loginUser: LoginUserPayload, loading: boolean, error: boolean };
 };
 
-class Login extends React.Component {
+class SignInForm extends React.Component {
   props: Props;
   state: LoginUserInput = { username: '', password: '', clientMutationId: null };
 
@@ -33,61 +30,45 @@ class Login extends React.Component {
     });
   }
 
-  handleLogout = () => {
-    this.props.client.resetStore();
-    localStorage.removeItem('token');
-    localStorage.removeItem('id');
-    window.location.reload();
-  }
-
-  handleChange = (e) => {
+  handleChange = (e: SyntheticInputEvent) => {
     const field = e.target.name;
+    console.log(e.target.checkValidity());
     this.setState({ [field]: e.target.value });
   }
 
+
   render() {
-    const { token } = this.props;
-
-    if (token) {
-      return (
-        <main className="page">
-          <nav>
-            <div>{}</div>
-            <button
-              onClick={this.handleLogout}
-            >
-              Logout
-            </button>
-          </nav>
-          {this.props.children}
-        </main>
-      );
-    }
-
     return (
-      <main>
-        <nav>
+      <div className={styles.form}>
+        <div className={styles.head}>
+          <h2>Sign In</h2>
+          <a href="">or Sign Up</a>
+        </div>
+
         <label>
+          Email:
           <input
+            type="email"
             name="username"
             value={this.state.username}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+          />
         </label>
         <label>
+          Pass:
           <input
             type="password"
             name="password"
             value={this.state.password}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+          />
         </label>
 
-        <button
-          onClick={this.handleLogin}
-        >
-          Login
+        <button className={styles.button} onClick={this.handleLogin}>
+          Go
         </button>
-        </nav>
-      </main>
+        <p className="small"><a href="">Recover Creds</a></p>
+      </div>
     );
   }
 }
@@ -104,4 +85,4 @@ const MUTATION = gql`
     }
   }`;
 
-export default withApollo(graphql(MUTATION)(Login));
+export default graphql(MUTATION)(SignInForm);

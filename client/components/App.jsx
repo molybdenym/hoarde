@@ -5,7 +5,7 @@ import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
 import CharSheet from './CharSheet';
-import TopBar from './TopBar';
+import TopNav from './TopNav';
 
 const token = window.localStorage.getItem('token');
 const client = new ApolloClient({
@@ -24,9 +24,9 @@ class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={this.props.client || client}>
-        <TopBar token={token}>
+        <TopNav token={token}>
           <CharSheet />
-        </TopBar>
+        </TopNav>
       </ApolloProvider>
     );
   }
