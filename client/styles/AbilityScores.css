@@ -1,4 +1,4 @@
-@value primaryText, lightText, defaultBg, lightBg, defaultBg, accentBg, divider from './shared/palette.css';
+@value primaryText, lightText, defaultBg, lightBg, accentBg, divider from './shared/palette.css';
 
 .section {
   display: flex;

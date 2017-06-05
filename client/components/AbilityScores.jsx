@@ -37,7 +37,7 @@ const AbilityTile = (props: { data: Ability }) => {
       <h1>{numWithSign(abilityMod)}</h1>
       <div className={styles.score}>
         <div><p>{totalScore}</p><p className="tiny">tot</p></div>
-        {proficient ? <div className={styles.prof}><i className="fa fa-trophy" aria-hidden="true"></i></div> : null}
+        {proficient ? <div className={styles.prof}><i className="fa fa-trophy" aria-hidden="true" /></div> : null}
         <div className={styles.sav}><p>{numWithSign(savThrow)}</p><p className="tiny">sav</p></div>
       </div>
 

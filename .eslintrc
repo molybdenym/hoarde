@@ -34,6 +34,19 @@
     "no-use-before-define": 0,
     "arrow-body-style": 0,
     "dot-notation": 0,
-    "no-console": 0
+    "no-console": 0,
+    "class-methods-use-this": [
+      "error",
+      "exceptMethods": [
+        "componentDidMount",
+        "componentDidUpdate",
+        "componentWillMount",
+        "componentWillReceiveProps",
+        "componentWillUnmount",
+        "componentWillUpdate",
+        "render",
+        "shouldComponentUpdate",
+      ]
+    ]
   }
 }
