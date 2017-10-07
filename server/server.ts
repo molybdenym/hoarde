@@ -1,12 +1,9 @@
-/* @flow */
-
-// import { Meteor } from 'meteor/meteor';
 import { WebApp } from 'meteor/webapp';
-import express from 'express';
-import bodyParser from 'body-parser';
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
-import proxyMiddleware from 'http-proxy-middleware';
+import * as proxyMiddleware from 'http-proxy-middleware';
 
 // import schema from '../imports/api/index.js';
 import Mocks from '../imports/api/mocks';
