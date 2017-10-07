@@ -19,9 +19,9 @@
     "http-proxy-middleware": "^0.17.4",
     "isomorphic-fetch": "^2.2.1",
     "meteor-node-stubs": "~0.2.4",
-    "react": "^15.6.2",
+    "react": "^16.0.0",
     "react-apollo": "^1.4.16",
-    "react-dom": "^15.6.2"
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "apollo-codegen": "^0.16.5",
