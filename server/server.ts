@@ -5,10 +5,10 @@ import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import * as proxyMiddleware from 'http-proxy-middleware';
 
-// import schema from '../imports/api/index.js';
-import Mocks from '../imports/api/mocks';
-import typeDefs from '../imports/api/schema.js';
-import resolvers from '../imports/api/resolvers.js';
+// import schema from '../imports/api/index';
+// import Mocks from '../imports/api/mocks';
+import typeDefs from '../imports/api/schema';
+import resolvers from '../imports/api/resolvers';
 
 
 const graphQLServer = express();
@@ -19,18 +19,16 @@ const executableSchema = makeExecutableSchema({
   resolvers,
 });
 
-addMockFunctionsToSchema({
-  schema: executableSchema,
-  mocks: Mocks,
-  preserveResolvers: true,
-});
+// addMockFunctionsToSchema({
+//   schema: executableSchema,
+//   mocks: Mocks,
+//   preserveResolvers: true,
+// });
 
 graphQLServer.use(bodyParser.urlencoded({ extended: true }));
 graphQLServer.use(bodyParser.json());
 graphQLServer.use('/graphql', graphqlExpress({ schema: executableSchema }));
 graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
-graphQLServer.listen(GRAPHQL_PORT, () => console.log(
-  `GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}`,
-));
+graphQLServer.listen(GRAPHQL_PORT, () => console.log(`GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}`));
 
 WebApp.rawConnectHandlers.use(proxyMiddleware(`http://localhost:${GRAPHQL_PORT}/graphql`));

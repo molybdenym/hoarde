@@ -1,0 +1,2 @@
+/* Values for the RequestLogField enum */
+export type RequestLogField = "appId" | "userId" | "isAdmin" | "username" | "isBillable" | "status" | "logType" | "start" | "createdAt" | "duration" | "durationHr" | "responseSizeBytes" | "requestMethod" | "originalUrl" | "errors" | "resolvers";

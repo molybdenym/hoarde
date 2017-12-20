@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib":["dom", "es2017"],
+    "sourceMap": true,
+    "jsx": "react",
+    "allowJs": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "experimentalDecorators": true,
+    "baseUrl":"./"
+  },
+  "rootDirs": ["client", "server", "imports", "types"],
+  "include": [
+    "client/**/*.ts",
+
+    "imports/**/*.ts",
+    "types/gen-types/**/*.ts"
+  ],
+  "exclude": [
+    ".meteor",
+    "node_modules"
+  ]
+}
