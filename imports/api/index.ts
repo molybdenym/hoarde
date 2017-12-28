@@ -1,7 +1,7 @@
-// Import schema definition
-const SchemaDefinition = require('./schema.graphql');
+// // Import schema definition
+// const SchemaDefinition = require('./schema.graphql');
 
-// Import query
-const Query = require('./query.graphql');
+// // Import query
+// const Query = require('./query.graphql');
 
-export default [SchemaDefinition, Query];
+// export default [SchemaDefinition, Query];
