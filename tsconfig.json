@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib":["dom", "es2017"],
+    "sourceMap": true,
+    "jsx": "react",
+    "allowJs": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "experimentalDecorators": true,
+    "baseUrl": "."
+  },
+  "rootDirs": ["client", "types/gen-types/css"],
+  "exclude": [
+    ".meteor",
+    "node_modules"
+  ]
+}

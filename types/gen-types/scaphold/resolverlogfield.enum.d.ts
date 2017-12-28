@@ -1,0 +1,2 @@
+/* Values for the ResolverLogField enum */
+export type ResolverLogField = "fieldName" | "operation" | "start" | "path" | "status" | "error" | "totalDuration" | "count" | "minDuration" | "maxDuration" | "avgDuration" | "parentType" | "returnType" | "parsedReturnType";
