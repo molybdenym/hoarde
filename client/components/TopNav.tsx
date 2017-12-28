@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ReactChildren } from 'react';
+// import { ReactChildren } from 'react';
 import { withApollo } from 'react-apollo';
 
 import Modal from './Modal';
@@ -44,8 +44,7 @@ class TopNav extends React.Component<Props, {}> {
 
     return (
       <main>
-        <nav>
-        </nav>
+        <nav />
         <Modal handleClose={() => { console.log('click!!'); }}>
           <SignInForm />
         </Modal>

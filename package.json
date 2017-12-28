@@ -38,6 +38,7 @@
     "graphql-code-generator": "^0.8.14",
     "node-sass": "^4.7.2",
     "tslint": "^5.8.0",
+    "tslint-react": "^3.3.3",
     "typed-css-modules": "^0.3.1"
   },
   "cssModules": {
