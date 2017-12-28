@@ -5,7 +5,7 @@ import { graphql, QueryProps } from 'react-apollo';
 import { LoginUserPayload } from 'types/gen-types/scaphold/loginuserpayload.type';
 import { LoginUserInput } from 'types/gen-types/scaphold/loginuserinput.input-type';
 
-import * as styles from '../styles/SignInForm.css';
+import { styles } from '../styles/SignInForm.css';
 
 // interface DataProps {
 //   data: LoginUserPayload & QueryProps;

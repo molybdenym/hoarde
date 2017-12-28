@@ -4,7 +4,7 @@ import { numWithSign } from 'imports/lib/helpers';
 
 import { Ability } from 'types/gen-types/scaphold/ability.type';
 
-import * as styles from '../styles/AbilityScores.css';
+import { styles } from '../styles/AbilityScores.css';
 
 class AbilityScores extends React.Component {
   props: { data?: Array<Ability> | null };

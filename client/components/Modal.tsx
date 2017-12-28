@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactChildren } from 'react';
 
-import * as styles from '../styles/Modal.css';
+import { styles } from '../styles/Modal.css';
 
 
 type Props = {
