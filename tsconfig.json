@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
     "lib":["dom", "es2017"],
     "sourceMap": true,
     "jsx": "react",
@@ -13,15 +11,9 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "experimentalDecorators": true,
-    "baseUrl":"./"
+    "baseUrl": "."
   },
-  "rootDirs": ["client", "server", "imports", "types"],
-  "include": [
-    "client/**/*.ts",
-
-    "imports/**/*.ts",
-    "types/gen-types/**/*.ts"
-  ],
+  "rootDirs": ["client", "types/gen-types/css"],
   "exclude": [
     ".meteor",
     "node_modules"

@@ -26,6 +26,5 @@ meteor run
 - react
 - apollo (graphql)
 - css modules
-- flow type
-- babel (es6)
+- typescript
 
