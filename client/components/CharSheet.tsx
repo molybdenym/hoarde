@@ -1,55 +1,47 @@
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { graphql, QueryProps } from 'react-apollo';
-
+import { QueryResult, Query } from 'react-apollo';
 import AbilityScores from './AbilityScores';
+import { PC } from 'types/gen-types/scaphold/pc.type';
+import { Query as GetPC, GetPcQueryArgs } from 'types/gen-types/scaphold/query.type';
 
-import { User } from 'types/gen-types/scaphold/user.type';
+class CharSheetQuery extends Query<GetPC> {};
 
-type Props = { data: { getUser: User } & QueryProps };
+const CharSheet: React.SFC<GetPcQueryArgs> = props => (
+  <CharSheetQuery query={GET_PC} variables={{ id: props.id }}>
+    {({ loading, data, error }: QueryResult<GetPC>) => {
+      if (loading) return <div>Loading . . .</div>;
+      if (error) return <h1>ERROR! {error.message}</h1>;
 
-class CharSheet extends React.Component<Props, {}> {
+      //console.log(data.getPc);
+      const myChar = data ? data.getPc : null;
 
-  render() {
-    if (this.props.data.loading) return <div>Loading . . .</div>;
-    if (this.props.data.error) return <h1>ERROR!</h1>;
-
-    const my = this.props.data.getUser;
-    const myChars = my.playerCharacters;
-
-    return (
-      <div className="sheet">
-        {/* <h3>{my.username}</h3> */}
-        <AbilityScores data={(myChars && myChars.edges) ? myChars.edges[0].node.abilities : null} />
-      </div>
-    );
-  }
-}
+      return (
+        <div className="sheet">
+          {/* <h3>{my.username}</h3> */}
+          {myChar && <AbilityScores data={(myChar) ? myChar.abilities : null} />}
+        </div>
+      );
+    }}
+  </CharSheetQuery>
+);
 
 const GET_PC = gql`
-query GetUser {
-  getUser(id: "VXNlcjoy") {
+query GetPC($id: ID!) {
+  getPc(id: $id) {
     id
-    username,
-    playerCharacters(first: 1) {
-      edges {
-        node {
-          id
-          abilities {
-            raceMod
-            roll2
-            baseScore
-            levelMod
-            roll3
-            roll1
-            proficient
-            magicMod
-            abbr
-          }
-        }
-      }
+    abilities {
+      raceMod
+      roll2
+      baseScore
+      levelMod
+      roll3
+      roll1
+      proficient
+      magicMod
+      abbr
     }
   }
 }`;
 
-export default graphql<User>(GET_PC)(CharSheet);
+export default CharSheet;

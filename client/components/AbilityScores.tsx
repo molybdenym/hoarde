@@ -1,10 +1,8 @@
 import * as React from 'react';
-
 import { numWithSign } from 'imports/lib/helpers';
-
 import { Ability } from 'types/gen-types/scaphold/ability.type';
-
 import { styles } from '../styles/AbilityScores.css';
+
 
 class AbilityScores extends React.Component {
   props: { data?: Array<Ability> | null };

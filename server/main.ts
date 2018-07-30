@@ -31,4 +31,4 @@ graphQLServer.use('/graphql', graphqlExpress({ schema: executableSchema }));
 graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 graphQLServer.listen(GRAPHQL_PORT, () => console.log(`GraphQL Server is now running on http://localhost:${GRAPHQL_PORT}`));
 
-// WebApp.rawConnectHandlers.use(proxyMiddleware(`http://localhost:${GRAPHQL_PORT}/graphql`));
+// WebApp.rawConnectHandlers.use(proxyMiddleware({ target: `http://localhost:${GRAPHQL_PORT}/graphql` }));

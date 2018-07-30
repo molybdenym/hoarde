@@ -7,7 +7,7 @@ import SignInForm from './SignInForm';
 
 
 type Props = {
-  token: string,
+  token: string | null,
   client: any,
   children?: JSX.Element | string,
 };
