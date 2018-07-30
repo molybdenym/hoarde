@@ -1,18 +1,6 @@
-// import { WebApp } from 'meteor/webapp';
 import * as express from 'express';
-// import * as bodyParser from 'body-parser';
-import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
-// import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import { ApolloServer, gql } from 'apollo-server-express';
-// import * as proxyMiddleware from 'http-proxy-middleware';
 
-// import schema from '../imports/api/index';
-// import Mocks from '../imports/api/mocks';
-// import typeDefs from '../imports/api/schema';
-// import resolvers from '../imports/api/resolvers';
-
-
-// const graphQLServer = express();
 const GRAPHQL_PORT = 4000;
 
 // Construct a schema, using GraphQL schema language
