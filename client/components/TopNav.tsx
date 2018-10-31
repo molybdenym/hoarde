@@ -4,6 +4,7 @@ import { withApollo } from 'react-apollo';
 
 import Modal from './Modal';
 import SignInForm from './SignInForm';
+import { styles } from '../main.css';
 
 
 type Props = {

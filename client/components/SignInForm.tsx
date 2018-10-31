@@ -5,6 +5,7 @@ import { LoginUserPayload } from 'types/gen-types/scaphold/loginuserpayload.type
 import { LoginUserInput } from 'types/gen-types/scaphold/loginuserinput.input-type';
 import { styles } from '../styles/SignInForm.css';
 
+
 class SignInMutation extends Mutation<LoginUserPayload> {};
 
 class SignInForm extends React.Component<{}, LoginUserInput> {
