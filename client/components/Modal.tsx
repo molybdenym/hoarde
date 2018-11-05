@@ -41,7 +41,7 @@ export class Modal extends React.Component<Props, {}> {
         <div className={styles.dialog}>
           {handleClose &&
             <i
-              className={`fa fa-close ${styles.dialogClose}`}
+              className={`fas fa-times ${styles.dialogClose}`}
               onClick={handleClose}
             />
           }
