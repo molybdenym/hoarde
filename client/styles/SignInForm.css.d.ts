@@ -1,3 +1,4 @@
+declare namespace styles {
 export const primaryText: string;
 export const lightText: string;
 export const lightBg: string;
@@ -7,3 +8,7 @@ export const divider: string;
 export const form: string;
 export const head: string;
 export const button: string;
+}
+
+export { styles };
+export default styles;

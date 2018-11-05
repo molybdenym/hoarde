@@ -3,7 +3,7 @@ import * as React from 'react';
 // Libs
 // Components
 // Styles
-import { styles } from '../styles/Modal.css';
+import styles from '../styles/Modal.css';
 // Types
 type Props = {
   handleClose?: () => void,

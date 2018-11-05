@@ -4,7 +4,7 @@ import * as React from 'react';
 import { numWithSign } from 'imports/lib/helpers';
 // Components
 // Styles
-import { styles } from '../styles/AbilityScores.css';
+import styles from '../styles/AbilityScores.css';
 // Types
 import { Ability } from 'types/gen-types/graphcool/types';
 type Props = {

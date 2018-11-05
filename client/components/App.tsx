@@ -9,6 +9,7 @@ import { ApolloProvider } from 'react-apollo';
 import { CharSheet } from './CharSheet';
 import { TopNav } from './TopNav';
 // Styles
+import styles from '../styles/shared/global.css';
 // Types
 
 
@@ -22,10 +23,11 @@ const client = new ApolloClient({
   link,
 });
 
-export const App: React.SFC<{}> = props => {
+export const App: React.SFC<{}> = () => {
+
   return (
     <ApolloProvider client={client}>
-      <TopNav token={token}>
+      <TopNav className={styles.nav} token={token}>
         <CharSheet id="111" />
       </TopNav>
     </ApolloProvider>

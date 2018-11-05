@@ -1,3 +1,4 @@
+declare namespace styles {
 export const primaryText: string;
 export const lightText: string;
 export const defaultBg: string;
@@ -11,3 +12,7 @@ export const rolls: string;
 export const mods: string;
 export const prof: string;
 export const sav: string;
+}
+
+export { styles };
+export default styles;

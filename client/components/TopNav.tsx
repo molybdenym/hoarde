@@ -7,12 +7,13 @@ import { withApollo, WithApolloClient } from 'react-apollo';
 import { Modal } from './Modal';
 import { SignInForm } from './SignInForm';
 // Styles
-import { styles } from '../main.css';
 // Types
 type Props = {
   token: string | null,
+  className?: string,
   children?: JSX.Element | string,
 };
+
 
 const TopNavComp: React.SFC<WithApolloClient<Props>> = props => {
   const handleLogout = () => {
