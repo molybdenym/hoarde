@@ -10,5 +10,4 @@ export const head: string;
 export const button: string;
 }
 
-export { styles };
 export default styles;

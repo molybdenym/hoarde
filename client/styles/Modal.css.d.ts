@@ -4,5 +4,4 @@ export const dialog: string;
 export const dialogClose: string;
 }
 
-export { styles };
 export default styles;

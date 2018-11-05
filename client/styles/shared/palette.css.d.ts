@@ -9,5 +9,4 @@ export const secondaryText: string;
 export const divider: string;
 }
 
-export { styles };
 export default styles;

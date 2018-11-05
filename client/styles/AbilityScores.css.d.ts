@@ -14,5 +14,4 @@ export const prof: string;
 export const sav: string;
 }
 
-export { styles };
 export default styles;
