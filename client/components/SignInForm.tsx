@@ -1,20 +1,24 @@
+// Modules
 import * as React from 'react';
 import gql from 'graphql-tag';
 import { graphql, Mutation, QueryProps } from 'react-apollo';
-import { LoginUserPayload } from 'types/gen-types/scaphold/loginuserpayload.type';
-import { LoginUserInput } from 'types/gen-types/scaphold/loginuserinput.input-type';
+// Libs
+// Components
+import { SigninPayload, SigninUserMutationArgs, AuthProviderEmail } from 'types/gen-types/graphcool/types';
+// Styles
 import { styles } from '../styles/SignInForm.css';
+// Types
 
 
-class SignInMutation extends Mutation<LoginUserPayload> {};
+class SignInMutation extends Mutation<{signinUser: SigninPayload}, AuthProviderEmail> {};
 
-class SignInForm extends React.Component<{}, LoginUserInput> {
-  state: LoginUserInput = { username: '', password: '', clientMutationId: null };
+export class SignInForm extends React.Component<{}, AuthProviderEmail> {
+  state: AuthProviderEmail = { email: '', password: '' };
 
-  loginCompleted = (res: LoginUserPayload) => {
-    const { token, user } = res;
+  loginCompleted = (res: {signinUser: SigninPayload}) => {
+    const { token, user } = res.signinUser;
     if (token) localStorage.setItem('token', token);
-    if (user) localStorage.setItem('id', JSON.stringify(user.username));
+    if (user) localStorage.setItem('email', JSON.stringify(user.email));
     window.location.reload();
   }
 
@@ -24,15 +28,14 @@ class SignInForm extends React.Component<{}, LoginUserInput> {
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const field = e.target.name;
-    if (field === 'username') this.setState({ username: e.target.value });
+    if (field === 'email') this.setState({ email: e.target.value });
     if (field === 'password') this.setState({ password: e.target.value });
   }
-
 
   render() {
     return (
       <SignInMutation mutation={LOGIN_USER} onCompleted={this.loginCompleted} onError={this.loginError}>
-        {(loginUser, { data }) => (
+        {(signinUser, { data }) => (
           <div className={styles.form}>
             <div className={styles.head}>
               <h2>Sign In</h2>
@@ -43,8 +46,8 @@ class SignInForm extends React.Component<{}, LoginUserInput> {
               Email:
               <input
                 type="email"
-                name="username"
-                value={this.state.username}
+                name="email"
+                value={this.state.email}
                 onChange={this.handleChange}
               />
             </label>
@@ -61,7 +64,7 @@ class SignInForm extends React.Component<{}, LoginUserInput> {
 
             <button
               className={styles.button}
-              onClick={() => loginUser({ variables: { data: this.state } })}
+              onClick={() => signinUser({ variables: { ...this.state } })}
             >
               Go
             </button>
@@ -74,8 +77,13 @@ class SignInForm extends React.Component<{}, LoginUserInput> {
 }
 
 const LOGIN_USER = gql`
-  mutation LoginUserQuery ($data: LoginUserInput!) {
-    loginUser(input: $data) {
+  mutation SigninUserMutation($email: String!, $password: String!) {
+    signinUser(
+      email: {
+        email: $email,
+        password: $password
+      }
+    ){
       token
       user {
         id
@@ -85,4 +93,17 @@ const LOGIN_USER = gql`
     }
   }`;
 
-export default SignInForm;
+const CREATE_USER = gql`
+  mutation CreateUserMutation($email: String!, $password: String!) {
+    createUser(
+      username: $email,
+      authProvider: {
+        email: {
+          email: $email,
+          password: $password
+        }
+      }
+    ){
+        email
+    }
+  }`;

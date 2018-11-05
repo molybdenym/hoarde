@@ -10,7 +10,8 @@
   },
   "scripts": {
     "start": "npm run codegen && meteor run",
-    "codegen": "npm run codegen:scaphold",
+    "codegen": "npm run codegen:graphcool",
+    "codegen:graphcool": "node_modules/.bin/gql-gen --schema https://api.graph.cool/simple/v1/cj1b0ohhv3sn10101cwktpsf1 --template node_modules/graphql-codegen-typescript-template --out ./types/gen-types/graphcool/ ./client/**/*.ts",
     "codegen:scaphold": "node_modules/.bin/gql-gen --url https://us-west-2.api.scaphold.io/graphql/tame-holiday --template typescript-multiple --out ./types/gen-types/scaphold/ ./client/**/*.ts",
     "tcm": "node_modules/.bin/tcm client",
     "tcm:watch": "node_modules/.bin/tcm -w client"
@@ -45,7 +46,9 @@
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
     "apollo-codegen": "^0.20.2",
-    "graphql-code-generator": "^0.12.6",
+    "graphql-code-generator": "^0.13.0",
+    "graphql-codegen-typescript-template": "^0.13.0",
+    "graphql-codegen-typescript-template-multiple": "^0.9.4",
     "node-sass": "^4.9.4",
     "tslint": "^5.11.0",
     "tslint-react": "^3.6.0",

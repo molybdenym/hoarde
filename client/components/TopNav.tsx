@@ -1,57 +1,51 @@
+// Modules
 import * as React from 'react';
 // import { ReactChildren } from 'react';
-import { withApollo } from 'react-apollo';
-
-import Modal from './Modal';
-import SignInForm from './SignInForm';
+import { withApollo, WithApolloClient } from 'react-apollo';
+// Libs
+// Components
+import { Modal } from './Modal';
+import { SignInForm } from './SignInForm';
+// Styles
 import { styles } from '../main.css';
-
-
+// Types
 type Props = {
   token: string | null,
-  client: any,
   children?: JSX.Element | string,
 };
 
-class TopNav extends React.Component<Props, {}> {
-  props: Props;
-
-  handleLogout = () => {
-    this.props.client.resetStore();
+const TopNavComp: React.SFC<WithApolloClient<Props>> = props => {
+  const handleLogout = () => {
+    props.client.resetStore();
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     window.location.reload();
   }
 
-
-  render() {
-    const { token } = this.props;
-
-    if (token) {
-      return (
-        <main className="page">
-          <nav>
-            <div>{}</div>
-            <button
-              onClick={this.handleLogout}
-            >
-              Logout
-            </button>
-          </nav>
-          {this.props.children}
-        </main>
-      );
-    }
-
+  if (props.token) {
     return (
-      <main>
-        <nav />
-        <Modal handleClose={() => { console.log('click!!'); }}>
-          <SignInForm />
-        </Modal>
+      <main className="page">
+        <nav>
+          <div>{}</div>
+          <button
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        </nav>
+        {props.children}
       </main>
     );
   }
+
+  return (
+    <main>
+      <nav />
+      <Modal handleClose={() => { console.log('click!!'); }}>
+        <SignInForm />
+      </Modal>
+    </main>
+  );
 }
 
-export default withApollo(TopNav);
+export const TopNav = withApollo<Props>(TopNavComp);

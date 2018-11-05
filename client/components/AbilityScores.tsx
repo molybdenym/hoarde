@@ -1,28 +1,32 @@
+// Modules
 import * as React from 'react';
+// Libs
 import { numWithSign } from 'imports/lib/helpers';
-import { Ability } from 'types/gen-types/scaphold/ability.type';
+// Components
+// Styles
 import { styles } from '../styles/AbilityScores.css';
-
-
-class AbilityScores extends React.Component {
-  props: { data?: Array<Ability> | null };
-
-  render() {
-    const { data } = this.props;
-
-    return (
-      <section className={styles.section}>
-        {data && data.map((x, i) => <AbilityTile key={i} data={x} />)}
-      </section>
-    );
-  }
+// Types
+import { Ability } from 'types/gen-types/graphcool/types';
+type Props = {
+  data?: Array<Ability>,
 }
 
 
-const AbilityTile = (props: { data: Ability }) => {
+export const AbilityScores: React.SFC<Props> = props => {
+  const { data } = props;
+
+  return (
+    <section className={styles.section}>
+      {data && data.map((x, i) => <AbilityTile key={i} data={x} />)}
+    </section>
+  );
+};
+
+
+const AbilityTile: React.SFC<{ data: Ability }> = props => {
   const { abbr, baseScore, raceMod, levelMod, magicMod, proficient } = props.data;
   const profBonus = 3;
-  const totalScore = baseScore || 0 + raceMod + levelMod + magicMod;
+  const totalScore = baseScore + raceMod + levelMod + magicMod;
   const abilityMod = Math.floor((totalScore - 10) / 2);
   const savThrow = proficient ? abilityMod + profBonus : abilityMod;
 
@@ -51,5 +55,3 @@ const AbilityTile = (props: { data: Ability }) => {
     </div>
   );
 };
-
-export default AbilityScores;

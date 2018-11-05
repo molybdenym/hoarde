@@ -1,16 +1,17 @@
+// Modules
 import * as React from 'react';
-import { ReactChildren } from 'react';
+// Libs
+// Components
+// Styles
 import { styles } from '../styles/Modal.css';
-
-
+// Types
 type Props = {
   handleClose?: () => void,
   children?: JSX.Element | string,
 };
 
-class Modal extends React.Component<Props, {}> {
-  props: Props;
 
+export class Modal extends React.Component<Props, {}> {
   handleKeyUp = (e: KeyboardEvent) => {
     const { handleClose } = this.props;
     if (e.keyCode === 27 && handleClose) handleClose();
@@ -33,7 +34,6 @@ class Modal extends React.Component<Props, {}> {
     document.removeEventListener('keyup', this.handleKeyUp);
   }
 
-
   render() {
     const { handleClose, children } = this.props;
     return (
@@ -51,5 +51,3 @@ class Modal extends React.Component<Props, {}> {
     );
   }
 }
-
-export default Modal;
