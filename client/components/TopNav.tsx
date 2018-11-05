@@ -1,6 +1,5 @@
 // Modules
 import * as React from 'react';
-// import { ReactChildren } from 'react';
 import { withApollo, WithApolloClient } from 'react-apollo';
 // Libs
 // Components

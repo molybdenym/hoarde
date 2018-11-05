@@ -1,12 +1,12 @@
 // Modules
 import * as React from 'react';
 import gql from 'graphql-tag';
-import { graphql, Mutation, QueryProps } from 'react-apollo';
+import { Mutation } from 'react-apollo';
 // Libs
 // Components
-import { SigninPayload, SigninUserMutationArgs, AuthProviderEmail } from 'types/gen-types/graphcool/types';
+import { SigninPayload, AuthProviderEmail } from 'types/gen-types/graphcool/types';
 // Styles
-import { styles } from '../styles/SignInForm.css';
+import styles from '../styles/SignInForm.css';
 // Types
 
 
